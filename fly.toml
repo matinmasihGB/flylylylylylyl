@@ -1,13 +1,14 @@
-app = "xhttp-relay-yourname"   # این نام را تغییر بده (یونیک باشه)
+app = "xhttp-relay-matin"     # این نام را به نام دلخواه خودت تغییر بده (یونیک باشد)
 
 [env]
-  PORT = "3000"
+  PORT = "8080"
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
+  min_machines_running = 1
 
 [[vm]]
   size = "shared-cpu-1x"
