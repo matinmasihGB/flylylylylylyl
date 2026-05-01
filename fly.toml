@@ -1,14 +1,17 @@
-app = "xhttp-relay-matin"     # این نام را به نام دلخواه خودت تغییر بده (یونیک باشد)
+app = "xhttp-relay-matin"     # ← این نام را به نام اپ خودت تغییر بده
+
+[build]
+  builder = "paketobuildpacks/builder:base"   # این خط مهم است
 
 [env]
   PORT = "8080"
+  NODE_VERSION = "20"
 
 [http_service]
   internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 1
 
 [[vm]]
   size = "shared-cpu-1x"
