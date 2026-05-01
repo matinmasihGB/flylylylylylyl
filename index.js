@@ -4,10 +4,10 @@ import http from "node:http";
 import https from "node:https";
 
 const TARGET_URL = (process.env.TARGET_URL || "").replace(/\/$/, "");
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT) || 8080;   // ← مهم: از env.PORT استفاده کن
 
 console.log(`✅ Fly Relay started on port ${PORT}`);
-console.log(`Target: ${TARGET_URL}`);
+console.log(`Target URL: ${TARGET_URL || "NOT SET"}`);
 
 const server = http.createServer(async (req, res) => {
   if (!TARGET_URL) {
@@ -67,4 +67,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, "0.0.0.0");
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Listening on http://0.0.0.0:${PORT}`);
+});
